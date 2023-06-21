@@ -1,0 +1,18 @@
+---
+- name: Create backports pin
+  ansible.bultin.template:
+    src: apt_preferences_borgmatic.j2
+    dest: /etc/apt/preferences.d/borgmatic
+  when:
+    - borgmatic.use_backports
+  notify:
+    - Update APT cache
+
+- name: Install borgmatic
+  ansible.builtin.apt:
+    pkg:
+      - borgbackup
+      - borgmatic
+    state: latest
+
+...

@@ -1,0 +1,5 @@
+---
+- name: Update APT cache
+  ansible.bultin.apt:
+    cache_valid_time: 1
+...
